@@ -1,0 +1,12 @@
+{
+    "name": "ete-portfolio-php/ete-portfolio-php",
+    "type": "project",
+    "description": "A portfolio project",
+    "keywords": [],
+    "license": "",
+    "require": {},
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {"App\\": "app/"}
+    }
+}
