@@ -1,7 +1,5 @@
 <?php
 if ($_GET['status'] == 'index')
     {
-        
-        
-        include 'Frontend/index.php';
+        include 'home.php';
     }

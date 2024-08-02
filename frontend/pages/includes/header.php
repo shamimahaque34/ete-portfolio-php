@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,27 +22,27 @@
     <!-- Required meta tags link End Here -->
 
     <!-- Bootstrap CSS link  Start Here-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Bootstrap CSS link End Here -->
     
     <!--owl carousel css link Starts Here-->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.min.css">
-    <link rel="stylesheet" href="css/owl.transitions.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.theme.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.transitions.min.css">
     <!--owl carousel css link Ends Here-->
     
     
     <!-- Fontawesome link Start Here   -->
-    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
     <!-- Fontawesome link End Here   -->
 
     <!--    Favicon link Start Here-->
-    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <!--    Favicon link End Here-->
 
     <!--Custom CSS link Start Here-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <!--Custom CSS link End Here-->
 
     <title>Shamima Haque</title>
@@ -56,7 +59,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand logo" href="index.html">
-        <img src="images/logo.png" alt="logo">
+        <img src="../assets/images/logo.png" alt="logo">
 <!--       <h2>Shamima Haque</h2>-->
         </a>
         
