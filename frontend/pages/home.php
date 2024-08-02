@@ -1,4 +1,10 @@
-<?php include 'includes/header.php'; ?>
+<?php 
+
+$activePage="home"; 
+$header = 'includes/header.php';
+include($header);   
+?>
+
 
 <!--Preloader Starts Here-->
 <!-- <div id="loading"></div> -->

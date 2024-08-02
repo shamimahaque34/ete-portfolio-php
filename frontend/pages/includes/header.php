@@ -51,7 +51,7 @@
 <body onload="myFunction()">
 
 <!--Preloader Starts Here-->
-<div id="loading"></div>
+<!-- <div id="loading"></div> -->
 <!--Preloader Ends Here-->
       
 <!--Header Starts Here-->
@@ -69,19 +69,19 @@
 
   <div class="collapse navbar-collapse menu" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
+      <li class="nav-item <?php if($activePage == "home"){echo"active";}?>">
         <a class="nav-link" href="action.php?status=index">Home</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($activePage == "about"){echo"active";}?>">
         <a class="nav-link" href="action.php?status=about">About</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($activePage == "services"){echo"active";}?>">
         <a class="nav-link" href="action.php?status=services">Services</a>
       </li>
-       <li class="nav-item">
+       <li class="nav-item <?php if($activePage == "portfolio"){echo"active";}?>">
         <a class="nav-link" href="action.php?status=portfolio">Portfolio</a>
       </li>
-       <li class="nav-item">
+       <li class="nav-item <?php if($activePage == "contact"){echo"active";}?>">
         <a class="nav-link" href="action.php?status=contact">Contact</a>
       </li>
     </ul>
