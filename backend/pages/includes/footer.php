@@ -57,7 +57,7 @@
 <script src="../../assets/plugins/date-picker/jquery-ui.js"></script>
 
 <!-- bootstrap-datepicker js (Date picker Style-01) -->
-{{--<script src="../../assets/plugins/bootstrap-datepicker/js/datepicker.js"></script>--}}
+<script src="../../assets/plugins/bootstrap-datepicker/js/datepicker.js"></script>
 
 <!-- FORM ELEMENTS JS -->
 <script src="../../assets/js/formelementadvnced.js"></script>
