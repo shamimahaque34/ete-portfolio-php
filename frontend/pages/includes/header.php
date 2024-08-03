@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,6 +80,9 @@
       </li>
        <li class="nav-item <?php if($activePage == "contact"){echo"active";}?>">
         <a class="nav-link" href="action.php?status=contact">Contact</a>
+      </li>
+      <li class="nav-item <?php if($activePage == "login"){echo"active";}?>">
+        <a class="nav-link" href="login.php">Login</a>
       </li>
     </ul>
   </div>

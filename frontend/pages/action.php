@@ -1,4 +1,6 @@
 <?php
+require_once '../../vendor/autoload.php';
+use App\classes\Auth;
 if ($_GET['status'] == 'index')
     {
         include 'home.php';
@@ -23,3 +25,11 @@ if ($_GET['status'] == 'index')
 
         include 'contact.php';
     }
+
+
+    else if (isset($_POST['loginBtn']))
+{
+    $auth = new Auth($_POST);
+    $message = $auth->login();
+    include 'login.php';
+}
