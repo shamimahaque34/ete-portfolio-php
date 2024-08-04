@@ -31,7 +31,7 @@ class Auth extends Database
                 session_start();
                 $_SESSION['id'] = $this->data['id'];
                 $_SESSION['name'] = $this->data['name'];
-                header('Location:../../backend/pages/home/index.php');
+                header('Location: ../../backend/pages/action.php?status=index');
             }
             else
             {

@@ -27,6 +27,7 @@ if ($_GET['status'] == 'index')
     }
 
 
+
     else if (isset($_POST['loginBtn']))
 {
     $auth = new Auth($_POST);

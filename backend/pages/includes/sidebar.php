@@ -39,7 +39,7 @@
                     </a>
                     <ul class="slide-menu">
                         
-                        <li><a href="" class="slide-item">Home</a></li>
+                        <li><a href="action.php?status=manage-home" class="slide-item">Home</a></li>
                         <li><a href="" class="slide-item">About</a></li>
                         <li><a href="" class="slide-item">Service</a></li>
                         <li><a href="" class="slide-item">Portfolio</a></li>
