@@ -15,31 +15,26 @@
                         </h4>
                         <form action="action.php" method="post" enctype="multipart/form-data">
                             <div class="form-group row">
-                                <label class="col-form-label col-md-3">Product Name</label>
+                                <label class="col-form-label col-md-3">Name</label>
                                 <div class="col-md-9">
                                     <input type="text" name="name" class="form-control"/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-form-label col-md-3">Product Price</label>
+                                <label class="col-form-label col-md-3">Designation</label>
                                 <div class="col-md-9">
-                                    <input type="number" name="price" class="form-control"/>
+                                    <input type="text" name="designation" class="form-control"/>
                                 </div>
                             </div>
+                    
                             <div class="form-group row">
-                                <label class="col-form-label col-md-3">Stock Amount</label>
-                                <div class="col-md-9">
-                                    <input type="number" name="stock" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-form-label col-md-3">Product Description</label>
+                                <label class="col-form-label col-md-3">Description</label>
                                 <div class="col-md-9">
                                     <textarea name="description" class="form-control"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-form-label col-md-3">Product Image</label>
+                                <label class="col-form-label col-md-3">Image</label>
                                 <div class="col-md-9">
                                     <input type="file" name="image" class="form-control-file"/>
                                 </div>
@@ -47,7 +42,7 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3"></label>
                                 <div class="col-md-9">
-                                    <input type="submit" name="btn" class="btn btn-success btn-block" value="ADD"/>
+                                    <input type="submit" name="homeBtn" class="btn btn-success btn-block" value="ADD"/>
                                 </div>
                             </div>
                         </form>

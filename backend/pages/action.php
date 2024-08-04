@@ -1,6 +1,15 @@
 <?php
 require_once '../../vendor/autoload.php';
-if ($_GET['status'] == 'index')
+use App\classes\Backend;
+
+if (isset($_POST['homeBtn']))
+{
+    $product = new Backend($_POST, $_FILES);
+    $message = $product->save();
+    include 'home/manage.php';
+}
+
+else if ($_GET['status'] == 'index')
     {
         include 'home/index.php';
     }
@@ -11,6 +20,45 @@ if ($_GET['status'] == 'index')
     }
 
    else if ($_GET['status'] == 'manage-home')
-    {
+    {   $home = new Backend();
+        $homes = $home->getAllHomeInfo();
         include 'home/manage.php';
     }
+
+    else if ($_GET['status'] == 'edit-home')
+    {
+        $id = $_GET['id'];
+        $home = new Backend();
+        $homeInfo = $home->getHomeInfoById($id);
+        extract($homeInfo);
+        include 'home/edit.php';
+    }
+    else if ($_GET['status'] == 'delete-home')
+    {
+        $id = $_GET['id'];
+        $home = new Backend();
+        $home->deleteHome($id);
+    }
+
+    else if (isset($_POST['updateBtn']))
+{
+//    echo '<pre>';
+//    print_r($_POST);
+//    print_r($_FILES);
+//    echo '</pre>';
+//
+//    if (empty($_FILES['image']['name']))
+//    {
+//        echo 'Hello';
+//    }
+//    else
+//    {
+//        echo 'Hi';
+//    }
+//    exit();
+
+    $id = $_POST['id'];
+    $home = new Backend($_POST, $_FILES);
+    $homeInfo = $home->getHomeInfoById($id);
+    $home->updateHomeInfo($homeInfo);
+}

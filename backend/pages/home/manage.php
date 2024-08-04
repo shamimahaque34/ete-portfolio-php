@@ -4,10 +4,10 @@
 <section class="py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 mx-auto">
+                <div class="col-md-8 mx-auto">
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4 class="">MANAGE PRODUCT</h4>
+                            <h4 class="">MANAGE Home Info</h4>
                             <a href="action.php?status=add-home" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-plus-circle"></i></a>
                         </div>
                         <div class="card-body">
@@ -24,15 +24,26 @@
                             <table class="table table-striped table-hover table-responsive-md text-center">
                                 <thead>
                                 <tr>
-                                    <th>Product Name</th>
-                                    <th>Product Price</th>
-                                    <th>Stock Amount</th>
+                                    <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Description</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                               
+                                <?php foreach ($homes as $home) { extract($home) ?>
+                                <tr>
+                                    <td><?php echo $name ;?></td>
+                                    <td><?php echo $designation ;?></td>
+                                    <td><?php echo $description ;?></td>
+                                    <td><img src="<?php echo $image; ?>" alt="" height="100" width="100"></td>
+                                    <td>
+                                        <a href="action.php?status=edit-home&id=<?php echo $id; ?>" class="btn btn-success">Edit</a>
+                                        <a href="action.php?status=delete-home&id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
