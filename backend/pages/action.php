@@ -4,12 +4,12 @@ use App\classes\Backend;
 
 if (isset($_POST['homeBtn']))
 {
-    $product = new Backend($_POST, $_FILES);
-    $message = $product->save();
-    include 'home/manage.php';
+    $home = new Backend($_POST, $_FILES);
+    $message = $home->save();
+    include 'home/add.php';
 }
-
-else if ($_GET['status'] == 'index')
+else if (isset($_GET['status'])){
+ if ($_GET['status'] == 'index')
     {
         include 'home/index.php';
     }
@@ -39,6 +39,8 @@ else if ($_GET['status'] == 'index')
         $home = new Backend();
         $home->deleteHome($id);
     }
+
+}
 
     else if (isset($_POST['updateBtn']))
 {

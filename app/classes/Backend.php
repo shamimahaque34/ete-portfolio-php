@@ -110,25 +110,25 @@ class Backend
         }
     }
 
-    public function updateHomeInfo($productInfo)
+    public function updateHomeInfo($homeInfo)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
             if (empty($this->file['image']['name']))
             {
-                $this->imageURL = $productInfo['image'];
+                $this->imageURL = $homeInfo['image'];
             }
             else
             {
-                if (file_exists($productInfo['image']))
+                if (file_exists($homeInfo['image']))
                 {
-                    unlink($productInfo['image']);
+                    unlink($homeInfo['image']);
                 }
                 $this->imageURL = $this->getImageURL();
             }
 
-            $this->sql = "UPDATE `homes` SET `name` = '$this->name', `designation` = '$this->designation',`description` = '$this->description', `image` = '$this->imageURL' WHERE `id` = '$productInfo[id]'";
+            $this->sql = "UPDATE `homes` SET `name` = '$this->name', `designation` = '$this->designation',`description` = '$this->description', `image` = '$this->imageURL' WHERE `id` = '$homeInfo[id]'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();

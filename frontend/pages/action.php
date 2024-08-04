@@ -1,12 +1,17 @@
 <?php
 require_once '../../vendor/autoload.php';
 use App\classes\Auth;
+use App\classes\Backend;
 if ($_GET['status'] == 'index')
-    {
+    {   $home = new Backend();
+        $homes = $home->getAllHomeInfo();
         include 'home.php';
     }
 
-    else if($_GET['status'] == 'about'){
+
+    else if (isset($_GET['status'])){
+
+     if($_GET['status'] == 'about'){
 
         include 'about.php';
     }
@@ -25,6 +30,8 @@ if ($_GET['status'] == 'index')
 
         include 'contact.php';
     }
+
+}
 
 
 

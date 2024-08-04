@@ -69,61 +69,24 @@ include($header);
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div id="testimonial-slider" class="owl-carousel">
+                <?php foreach($homes as $home) { extract($home)?>
                 <div class="testimonial">
                     <div class="client">
-                        <img src="../assets/images/profile.jpeg" alt="">
+                        <img src="<?php echo $image; ?>" alt="">
                     </div>
                     <div class="testimonial-content">
                         <p class="description">
-                          I'm a Web Developer, based in Dhaka, Bangladesh. I did my bachelor
-                          in Computer Science and Engineering. I also underwent several
-                          trainings in Web Development at various renowned training
-                          institutions. I'm expert in HTML/HTML5, CSS/CSS3, Bootstrap 4,
-                          Wordpress Theme Customization, Wordpress Theme Development, JavaScript, Php, Laravel, Vue Js and more.
+                        <?php echo $description; ?>
                         </p>
-                        <h3 class="client-title">Shamima
-                            <small class="post">Web Developer</small>
+                        <h3 class="client-title"><?php echo $name; ?>
+                            <small class="post"><?php echo $designation; ?></small>
                         </h3>
                     </div>
                 </div>
 
-                <div class="testimonial">
-                    <div class="client">
-                        <img src="../assets/images/profile.jpeg"b alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="description">
-                          I'm a Web Developer, based in Dhaka, Bangladesh. I did my bachelor
-                          in Computer Science and Engineering. I also underwent several
-                          trainings in Web Development at various renowned training
-                          institutions. I'm expert in HTML/HTML5, CSS/CSS3, Bootstrap 4,
-                          Wordpress Theme Customization, Wordpress Theme Development, JavaScript, Php, Laravel, Vue Js and more.
-                        </p>
-                        <h3 class="client-title">Shamima
-                            <small class="post">Web Developer</small>
-                        </h3>
-                    </div>
-                </div>
+                <?php } ?>
 
-                <div class="testimonial">
-                    <div class="client">
-                        <img src="../assets/images/profile.jpeg"b alt="">
-                    </div>
-                    <div class="testimonial-content">
-                        <p class="description">
-                          I'm a Web Developer, based in Dhaka, Bangladesh. I did my bachelor
-                          in Computer Science and Engineering. I also underwent several
-                          trainings in Web Development at various renowned training
-                          institutions. I'm expert in HTML/HTML5, CSS/CSS3, Bootstrap 4,
-                          Wordpress Theme Customization, Wordpress Theme Development, JavaScript, Php, Laravel, Vue Js and more.
-                        </p>
-                        <h3 class="client-title">Shamima
-                            <small class="post">Web Developer</small>
-                        </h3>
-                    </div>
-                </div>
-
-            </div>
+               </div>
         </div>
     </div>
 </div>
