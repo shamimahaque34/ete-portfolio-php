@@ -106,7 +106,7 @@ class Service
         }
     }
 
-    public function deleteHome($id)
+    public function deleteService($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)

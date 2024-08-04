@@ -88,7 +88,7 @@ class Contact
         }
     }
 
-    public function updateHomeInfo($homeInfo)
+    public function updateContactInfo($homeInfo)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
