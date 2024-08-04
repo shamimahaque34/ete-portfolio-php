@@ -40,13 +40,13 @@
                     <ul class="slide-menu">
                         
                         <li><a href="action.php?status=manage-home" class="slide-item">Home</a></li>
-                        <li><a href="" class="slide-item">About</a></li>
-                        <li><a href="" class="slide-item">Service</a></li>
-                        <li><a href="" class="slide-item">Portfolio</a></li>
-                        <li><a href="" class="slide-item">Skill Category</a></li>
-                        <li><a href="" class="slide-item">Skill</a></li>
-                        <li><a href="" class="slide-item">Contact</a></li>
-                        <li><a href="" class="slide-item">Social Icon</a></li>
+                        <li><a href="action.php?status=manage-about" class="slide-item">About</a></li>
+                        <li><a href="action.php?status=manage-service" class="slide-item">Service</a></li>
+                        <li><a href="action.php?status=manage-portfolio" class="slide-item">Portfolio</a></li>
+                        <li><a href="action.php?status=manage-skill-category" class="slide-item">Skill Category</a></li>
+                        <li><a href="action.php?status=manage-skill" class="slide-item">Skill</a></li>
+                        <li><a href="action.php?status=manage-contact" class="slide-item">Contact</a></li>
+                        <li><a href="action.php?status=manage-social-icon" class="slide-item">Social Icon</a></li>
                     </ul>
                 </li>
 

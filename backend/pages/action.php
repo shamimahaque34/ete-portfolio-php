@@ -25,6 +25,41 @@ else if (isset($_GET['status'])){
         include 'home/manage.php';
     }
 
+    else if ($_GET['status'] == 'manage-about')
+    {   
+        include 'about/manage.php';
+    }
+
+    else if ($_GET['status'] == 'manage-service')
+    {   
+        include 'service/manage.php';
+    }
+
+    else if ($_GET['status'] == 'manage-portfolio')
+    {   
+        include 'portfolio/manage.php';
+    }
+
+    else if ($_GET['status'] == 'manage-contact')
+    {   
+        include 'contact/manage.php';
+    }
+
+    else if ($_GET['status'] == 'manage-skill-category')
+    {   
+        include 'skill-category/manage.php';
+    }
+
+    else if ($_GET['status'] == 'manage-skill')
+    {   
+        include 'skill/manage.php';
+    }
+
+    else if ($_GET['status'] == 'manage-social-icon')
+    {   
+        include 'social-icon/manage.php';
+    }
+
     else if ($_GET['status'] == 'edit-home')
     {
         $id = $_GET['id'];

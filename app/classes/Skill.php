@@ -1,6 +1,6 @@
 <?php
 namespace App\classes;
-class About
+class Skill
 {
     private $name;
     private $designation;

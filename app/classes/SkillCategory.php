@@ -1,10 +1,8 @@
 <?php
 namespace App\classes;
-class Contact
+class SkillCategory
 {
-    private $phone;
-    private $email;
-    private $address;
+    private $name;
     private $link;
     private $sql;
     private $queryResult;
@@ -16,14 +14,10 @@ class Contact
     {
         if ($data)
         {
-            $this->email   = $data['email'];
-            $this->phone   = $data['phone'];
-            $this->address = $data['address'];
+            $this->name         = $data['name'];
         }
-       
+        
     }
-
-    
 
     public function save()
     {
@@ -31,10 +25,10 @@ class Contact
         if ($this->link)
         {
 
-            $this->sql = "INSERT INTO `cintacts` (`email`, `phone`, `address`) VALUES ('$this->email', '$this->phone', '$this->address')";
+            $this->sql = "INSERT INTO `homes` (`name`) VALUES ('$this->name')";
             if (mysqli_query($this->link, $this->sql))
             {
-                return 'Contact Info added successfully';
+                return 'Skill Category Info added successfully';
             }
             else
             {
@@ -43,12 +37,12 @@ class Contact
         }
     }
 
-    public function getAllContactInfo()
+    public function getAllSkillCategoryInfo()
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `contacts`";
+            $this->sql = "SELECT * FROM `skill_categories`";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
@@ -56,9 +50,7 @@ class Contact
                 while ($this->row = mysqli_fetch_assoc($this->queryResult))
                 {
                     $this->data[$this->i]['id']    = $this->row['id'];
-                    $this->data[$this->i]['email']  = $this->row['email'];
-                    $this->data[$this->i]['phone'] = $this->row['phone'];
-                    $this->data[$this->i]['address'] = $this->row['address'];
+                    $this->data[$this->i]['name']  = $this->row['name'];
                     $this->i++;
                 }
                 return $this->data;
@@ -70,12 +62,12 @@ class Contact
         }
     }
 
-    public function getContactInfoById($id)
+    public function getSkillCategoryInfoById($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `contacts` WHERE `id` = '$id'";
+            $this->sql = "SELECT * FROM `skill_categories` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
@@ -88,18 +80,17 @@ class Contact
         }
     }
 
-    public function updateHomeInfo($homeInfo)
+    public function updateSkillCategoryInfo($homeInfo)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-
-            $this->sql = "UPDATE `contacts` SET `email` = '$this->email', `phone` = '$this->phone',`address` = '$this->address',  WHERE `id` = '$homeInfo[id]'";
+            $this->sql = "UPDATE `skill_categories` SET `name` = '$this->name'WHERE `id` = '$homeInfo[id]'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Contact Info information updated';
-                header('Location: action.php?status=manage-contact');
+                $_SESSION['message'] = 'Skill Category Info information updated';
+                header('Location: action.php?status=manage-skill-category');
             }
             else
             {
@@ -108,19 +99,18 @@ class Contact
         }
     }
 
-    public function deleteContact($id)
+    public function deleteSkillCategory($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->row = $this->getContactInfoById($id);
-           
-            $this->sql = "DELETE FROM `contacts` WHERE `id` = '$id'";
+            $this->row = $this->getSkillCategoryInfoById($id);
+            $this->sql = "DELETE FROM `skill_categories` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Contact info deleted successfully';
-                header('Location: action.php?status=manage-contact');
+                $_SESSION['message'] = 'Skill Category info deleted successfully';
+                header('Location: action.php?status=manage-skill-category');
             }
             else
             {

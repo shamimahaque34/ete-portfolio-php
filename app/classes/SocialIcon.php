@@ -1,10 +1,9 @@
 <?php
 namespace App\classes;
-class Contact
+class SocialIcon
 {
-    private $phone;
-    private $email;
-    private $address;
+    private $name;
+    private $link_address;
     private $link;
     private $sql;
     private $queryResult;
@@ -16,25 +15,20 @@ class Contact
     {
         if ($data)
         {
-            $this->email   = $data['email'];
-            $this->phone   = $data['phone'];
-            $this->address = $data['address'];
+            $this->name         = $data['name'];
+            $this->link_address  = $data['link_address'];
         }
-       
     }
-
-    
-
     public function save()
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
 
-            $this->sql = "INSERT INTO `cintacts` (`email`, `phone`, `address`) VALUES ('$this->email', '$this->phone', '$this->address')";
+            $this->sql = "INSERT INTO `social_icons` (`name`, `link_address`) VALUES ('$this->name', '$this->link_address', )";
             if (mysqli_query($this->link, $this->sql))
             {
-                return 'Contact Info added successfully';
+                return 'Social Icon Info added successfully';
             }
             else
             {
@@ -43,12 +37,12 @@ class Contact
         }
     }
 
-    public function getAllContactInfo()
+    public function getAllSocialIconInfo()
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `contacts`";
+            $this->sql = "SELECT * FROM `social_icons`";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
@@ -56,9 +50,8 @@ class Contact
                 while ($this->row = mysqli_fetch_assoc($this->queryResult))
                 {
                     $this->data[$this->i]['id']    = $this->row['id'];
-                    $this->data[$this->i]['email']  = $this->row['email'];
-                    $this->data[$this->i]['phone'] = $this->row['phone'];
-                    $this->data[$this->i]['address'] = $this->row['address'];
+                    $this->data[$this->i]['name']  = $this->row['name'];
+                    $this->data[$this->i]['link_address'] = $this->row['link_address'];
                     $this->i++;
                 }
                 return $this->data;
@@ -70,12 +63,12 @@ class Contact
         }
     }
 
-    public function getContactInfoById($id)
+    public function getSocialIconInfoById($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `contacts` WHERE `id` = '$id'";
+            $this->sql = "SELECT * FROM `social_icons` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
@@ -88,18 +81,18 @@ class Contact
         }
     }
 
-    public function updateHomeInfo($homeInfo)
+    public function updateSocialIconInfo($homeInfo)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
 
-            $this->sql = "UPDATE `contacts` SET `email` = '$this->email', `phone` = '$this->phone',`address` = '$this->address',  WHERE `id` = '$homeInfo[id]'";
+            $this->sql = "UPDATE `social_icons` SET `name` = '$this->name', `link_address` = '$this->link_address' WHERE `id` = '$homeInfo[id]'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Contact Info information updated';
-                header('Location: action.php?status=manage-contact');
+                $_SESSION['message'] = 'Social Icon Info information updated';
+                header('Location: action.php?status=manage-social-icon');
             }
             else
             {
@@ -108,19 +101,18 @@ class Contact
         }
     }
 
-    public function deleteContact($id)
+    public function deleteSocialIcon($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->row = $this->getContactInfoById($id);
-           
-            $this->sql = "DELETE FROM `contacts` WHERE `id` = '$id'";
+            $this->row = $this->getSocialIconInfoById($id);
+            $this->sql = "DELETE FROM `social_icons` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Contact info deleted successfully';
-                header('Location: action.php?status=manage-contact');
+                $_SESSION['message'] = 'Social Icon info deleted successfully';
+                header('Location: action.php?status=manage-social-icon');
             }
             else
             {
