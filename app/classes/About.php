@@ -2,12 +2,10 @@
 namespace App\classes;
 class About
 {
-    private $name;
-    private $designation;
-    private $description;
-    private $imageName;
+    private $cv;
+    private $cvName;
     private $directory;
-    private $imageURL;
+    private $cvURL;
     private $file;
     private $link;
     private $sql;
@@ -20,9 +18,8 @@ class About
     {
         if ($data)
         {
-            $this->name         = $data['name'];
-            $this->designation  = $data['designation'];
-            $this->description  = $data['description'];
+            $this->cv = $data['cv'];
+            
         }
         if ($file)
         {
@@ -30,11 +27,11 @@ class About
         }
     }
 
-    protected function getImageURL()
+    protected function getCVURL()
     {
-        $this->imageName = $this->file['image']['name'];
-        $this->directory = '../../backend/assets/images/'.$this->imageName;
-        move_uploaded_file($this->file['image']['tmp_name'], $this->directory);
+        $this->cvName = $this->file['cv']['name'];
+        $this->directory = '../../backend/assets/images/'.$this->cvName;
+        move_uploaded_file($this->file['cv']['tmp_name'], $this->directory);
         return $this->directory;
     }
 
@@ -43,19 +40,19 @@ class About
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            if (empty($this->file['image']['name']))
+            if (empty($this->file['cv']['name']))
             {
-                $this->imageURL = '';
+                $this->cvURL = '';
             }
             else
             {
-                $this->imageURL = $this->getImageURL();
+                $this->cvURL = $this->getCVURL();
             }
 
-            $this->sql = "INSERT INTO `homes` (`name`, `designation`, `description`, `image`) VALUES ('$this->name', '$this->designation', '$this->description', '$this->imageURL')";
+            $this->sql = "INSERT INTO `abouts` ( `cv`) VALUES ('$this->cvURL')";
             if (mysqli_query($this->link, $this->sql))
             {
-                return 'Home Info added successfully';
+                return 'About Info added successfully';
             }
             else
             {
@@ -64,23 +61,20 @@ class About
         }
     }
 
-    public function getAllHomeInfo()
+    public function getAllAboutInfo()
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `homes`";
+            $this->sql = "SELECT * FROM `abouts`";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
                 $this->i = 0;
                 while ($this->row = mysqli_fetch_assoc($this->queryResult))
                 {
-                    $this->data[$this->i]['id']    = $this->row['id'];
-                    $this->data[$this->i]['name']  = $this->row['name'];
-                    $this->data[$this->i]['designation'] = $this->row['designation'];
-                    $this->data[$this->i]['description'] = $this->row['description'];
-                    $this->data[$this->i]['image'] = $this->row['image'];
+                    $this->data[$this->i]['id']  = $this->row['id'];
+                    $this->data[$this->i]['cv']  = $this->row['cv'];
                     $this->i++;
                 }
                 return $this->data;
@@ -92,12 +86,12 @@ class About
         }
     }
 
-    public function getHomeInfoById($id)
+    public function getAboutInfoById($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `homes` WHERE `id` = '$id'";
+            $this->sql = "SELECT * FROM `abouts` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
@@ -110,30 +104,30 @@ class About
         }
     }
 
-    public function updateHomeInfo($homeInfo)
+    public function updateAboutInfo($aboutInfo)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            if (empty($this->file['image']['name']))
+            if (empty($this->file['cv']['name']))
             {
-                $this->imageURL = $homeInfo['image'];
+                $this->cvURL = $aboutInfo['cv'];
             }
             else
             {
-                if (file_exists($homeInfo['image']))
+                if (file_exists($aboutInfo['image']))
                 {
-                    unlink($homeInfo['image']);
+                    unlink($aboutInfo['image']);
                 }
-                $this->imageURL = $this->getImageURL();
+                $this->cvURL = $this->getCVURL();
             }
 
-            $this->sql = "UPDATE `homes` SET `name` = '$this->name', `designation` = '$this->designation',`description` = '$this->description', `image` = '$this->imageURL' WHERE `id` = '$homeInfo[id]'";
+            $this->sql = "UPDATE `abouts` SET  `cv` = '$this->cvURL' WHERE `id` = '$aboutInfo[id]'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Home Info information updated';
-                header('Location: action.php?status=manage-home');
+                $_SESSION['message'] = 'About Info information updated';
+                header('Location: action.php?status=manage-about');
             }
             else
             {
@@ -142,22 +136,22 @@ class About
         }
     }
 
-    public function deleteHome($id)
+    public function deleteAbout($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->row = $this->getHomeInfoById($id);
-            if (file_exists($this->row['image']))
+            $this->row = $this->getAboutInfoById($id);
+            if (file_exists($this->row['cv']))
             {
-                unlink($this->row['image']);
+                unlink($this->row['cv']);
             }
-            $this->sql = "DELETE FROM `homes` WHERE `id` = '$id'";
+            $this->sql = "DELETE FROM `abouts` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Home info deleted successfully';
-                header('Location: action.php?status=manage-home');
+                $_SESSION['message'] = 'About info deleted successfully';
+                header('Location: action.php?status=manage-about');
             }
             else
             {

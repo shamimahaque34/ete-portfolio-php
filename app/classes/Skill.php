@@ -1,14 +1,9 @@
 <?php
 namespace App\classes;
 class Skill
-{
+{   
+    private $skill_category_id;
     private $name;
-    private $designation;
-    private $description;
-    private $imageName;
-    private $directory;
-    private $imageURL;
-    private $file;
     private $link;
     private $sql;
     private $queryResult;
@@ -19,23 +14,10 @@ class Skill
     public function __construct($data = null, $file = null)
     {
         if ($data)
-        {
-            $this->name         = $data['name'];
-            $this->designation  = $data['designation'];
-            $this->description  = $data['description'];
+        {   
+            $this->skill_category_id  = $data['skill_category_id'];
+            $this->name               = $data['name'];
         }
-        if ($file)
-        {
-            $this->file = $file;
-        }
-    }
-
-    protected function getImageURL()
-    {
-        $this->imageName = $this->file['image']['name'];
-        $this->directory = '../../backend/assets/images/'.$this->imageName;
-        move_uploaded_file($this->file['image']['tmp_name'], $this->directory);
-        return $this->directory;
     }
 
     public function save()
@@ -43,19 +25,10 @@ class Skill
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            if (empty($this->file['image']['name']))
-            {
-                $this->imageURL = '';
-            }
-            else
-            {
-                $this->imageURL = $this->getImageURL();
-            }
-
-            $this->sql = "INSERT INTO `homes` (`name`, `designation`, `description`, `image`) VALUES ('$this->name', '$this->designation', '$this->description', '$this->imageURL')";
+            $this->sql = "INSERT INTO `skills` (,`skill_category_id`,`name`) VALUES ('$this->skill_category_id','$this->name')";
             if (mysqli_query($this->link, $this->sql))
             {
-                return 'Home Info added successfully';
+                return 'Skill Info added successfully';
             }
             else
             {
@@ -64,23 +37,21 @@ class Skill
         }
     }
 
-    public function getAllHomeInfo()
+    public function getAllSkillInfo()
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `homes`";
+            $this->sql = "SELECT * FROM `skills`";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
                 $this->i = 0;
                 while ($this->row = mysqli_fetch_assoc($this->queryResult))
                 {
-                    $this->data[$this->i]['id']    = $this->row['id'];
+                    $this->data[$this->i]['id']                = $this->row['id'];
+                    $this->data[$this->i]['skill_category_id'] = $this->row['skill_category_id'];
                     $this->data[$this->i]['name']  = $this->row['name'];
-                    $this->data[$this->i]['designation'] = $this->row['designation'];
-                    $this->data[$this->i]['description'] = $this->row['description'];
-                    $this->data[$this->i]['image'] = $this->row['image'];
                     $this->i++;
                 }
                 return $this->data;
@@ -92,12 +63,12 @@ class Skill
         }
     }
 
-    public function getHomeInfoById($id)
+    public function getSkillInfoById($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->sql = "SELECT * FROM `homes` WHERE `id` = '$id'";
+            $this->sql = "SELECT * FROM `skills` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 $this->queryResult = mysqli_query($this->link, $this->sql);
@@ -110,30 +81,18 @@ class Skill
         }
     }
 
-    public function updateHomeInfo($homeInfo)
+    public function updateSkillInfo($homeInfo)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            if (empty($this->file['image']['name']))
-            {
-                $this->imageURL = $homeInfo['image'];
-            }
-            else
-            {
-                if (file_exists($homeInfo['image']))
-                {
-                    unlink($homeInfo['image']);
-                }
-                $this->imageURL = $this->getImageURL();
-            }
 
-            $this->sql = "UPDATE `homes` SET `name` = '$this->name', `designation` = '$this->designation',`description` = '$this->description', `image` = '$this->imageURL' WHERE `id` = '$homeInfo[id]'";
+            $this->sql = "UPDATE `skills` SET `skill_category_id` = '$this->skill_category_id, `name` = '$this->name' WHERE `id` = '$homeInfo[id]'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Home Info information updated';
-                header('Location: action.php?status=manage-home');
+                $_SESSION['message'] = 'Skill Info information updated';
+                header('Location: action.php?status=manage-skill');
             }
             else
             {
@@ -142,22 +101,18 @@ class Skill
         }
     }
 
-    public function deleteHome($id)
+    public function deleteSkill($id)
     {
         $this->link = mysqli_connect('localhost', 'root', '', 'ete_portfolio_php');
         if ($this->link)
         {
-            $this->row = $this->getHomeInfoById($id);
-            if (file_exists($this->row['image']))
-            {
-                unlink($this->row['image']);
-            }
-            $this->sql = "DELETE FROM `homes` WHERE `id` = '$id'";
+            $this->row = $this->getSkillInfoById($id);
+            $this->sql = "DELETE FROM `skills` WHERE `id` = '$id'";
             if (mysqli_query($this->link, $this->sql))
             {
                 session_start();
-                $_SESSION['message'] = 'Home info deleted successfully';
-                header('Location: action.php?status=manage-home');
+                $_SESSION['message'] = 'Skill info deleted successfully';
+                header('Location: action.php?status=manage-skill');
             }
             else
             {
