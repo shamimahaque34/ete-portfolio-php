@@ -49,6 +49,6 @@ class Auth extends Database
         session_start();
         unset($_SESSION['id']);
         unset($_SESSION['name']);
-        header('Location: frontend/pages/action.php?status=index');
+        header('Location: ../../frontend/pages/action.php?status=index');
     }
 }

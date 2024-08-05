@@ -1,6 +1,7 @@
 <?php
 require_once '../../vendor/autoload.php';
 use App\classes\Backend;
+use App\classes\Auth;
 use App\classes\About;
 use App\classes\Service;
 use App\classes\Portfolio;
@@ -70,6 +71,12 @@ else if (isset($_GET['status'])){
  if ($_GET['status'] == 'index')
     {
         include 'home/index.php';
+    }
+
+    else if ($_GET['status'] == 'logout')
+    {
+        $auth = new Auth();
+        $auth->logout();
     }
 
  else if ($_GET['status'] == 'add-home')

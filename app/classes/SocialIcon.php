@@ -25,7 +25,7 @@ class SocialIcon
         if ($this->link)
         {
 
-            $this->sql = "INSERT INTO `social_icons` (`name`, `link_address`) VALUES ('$this->name', '$this->link_address', )";
+            $this->sql = "INSERT INTO `social_icons` (`name`, `link_address`) VALUES ('$this->name', '$this->link_address')";
             if (mysqli_query($this->link, $this->sql))
             {
                 return 'Social Icon Info added successfully';
