@@ -14,7 +14,7 @@ class SkillCategory
     {
         if ($data)
         {
-            $this->name         = $data['name'];
+            $this->name = $data['name'];
         }
         
     }
@@ -25,7 +25,7 @@ class SkillCategory
         if ($this->link)
         {
 
-            $this->sql = "INSERT INTO `homes` (`name`) VALUES ('$this->name')";
+            $this->sql = "INSERT INTO `skill_categories` (`name`) VALUES ('$this->name')";
             if (mysqli_query($this->link, $this->sql))
             {
                 return 'Skill Category Info added successfully';
