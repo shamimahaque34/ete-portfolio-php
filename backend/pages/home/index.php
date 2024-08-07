@@ -1,9 +1,6 @@
+  <?php include 'includes/header.php'; ?>
 
-   
-   <div class="page">
-    <div class="page-main">
-
-    <?php include 'includes/header.php'; ?>
+    
 
     <?php include 'includes/sidebar.php'; ?>
 

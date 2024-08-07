@@ -1,3 +1,18 @@
+<?php session_start(); 
+
+// print_r($_SESSION);
+//     exit();
+
+
+    
+if (!isset($_SESSION['id']))
+{
+    header('Location: ../../frontend/pages/login.php');
+    
+}
+?>
+    
+
 <!doctype html>
 <html lang="en" dir="ltr"> <!-- This "app.blade.php" master page is used for all the pages content present in "views/livewire" except "custom" and "switcher" pages -->
 	
